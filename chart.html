@@ -1,6 +1,3 @@
-<?php
-	require_once('config.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>Charts</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -167,7 +164,7 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
+                        <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -185,7 +182,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="chart.html">
                                 <i class="fas fa-chart-bar"></i>Charts</a>
                         </li>
@@ -439,47 +436,90 @@
                     </div>
                 </div>
             </header>
-            <!-- HEADER DESKTOP-->
+            <!-- END HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-12">
-                                <h2 class="title-1 m-b-25">Clients</h2>
-                                <div class="table-responsive table--no-card m-b-40">
-                                    <table class="table table-borderless table-striped table-earning">
-                                        <thead>
-                                            <tr>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Date of Initial Contact</th>
-                                                <th class="text-right">Address</th>
-                                                <th class="text-right">Phone</th>
-                                                <th class="text-right">Email</th>
-                                            </tr>
-                                        </thead>
-                                        <?php
-                                              //Display 
-                                              //$UID = $_GET['UID'];
-                                              $query="select * from contact";
-                                              $rs = mysqli_query($conn,$query);
-                                              //$count = 0;
-                                                  foreach($rs as $row){
-                                          ?> 
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo $row["Contact_First"]?></td>
-                                                <td><?php echo $row["Contact_Last"]?></td>
-                                                <td><?php echo $row["Date_of_Initial_Contact"]?></td>
-                                                <td class="text-right"><?php echo $row["Address"]?></td>
-                                                <td class="text-right"><?php echo $row["Phone"]?></td>
-                                                <td class="text-right"><?php echo $row["Email"]?></td>
-                                            </tr>
-                                        </tbody>
-                                        <?php } ?>
-                                    </table>
+                            <div class="col-lg-6">
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Yearly Sales</h3>
+                                        <canvas id="sales-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Team Commits</h3>
+                                        <canvas id="team-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Bar chart</h3>
+                                        <canvas id="barChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Rader chart</h3>
+                                        <canvas id="radarChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Line Chart</h3>
+                                        <canvas id="lineChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Doughut Chart</h3>
+                                        <canvas id="doughutChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Pie Chart</h3>
+                                        <canvas id="pieChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Polar Chart</h3>
+                                        <canvas id="polarChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Single Bar Chart</h3>
+                                        <canvas id="singelBarChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
                                 </div>
                             </div>
                         </div>
@@ -487,8 +527,8 @@
                 </div>
             </div>
             <!-- END MAIN CONTENT-->
-            <!-- END PAGE CONTAINER-->
         </div>
+        <!-- END PAGE CONTAINER-->
 
     </div>
 
